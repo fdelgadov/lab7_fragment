@@ -7,16 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.example.lab7_fragment.R;
+import com.example.lab7_fragment.activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSpanish#newInstance} factory method to
+ * Use the {@link FragmentTranslate#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSpanish extends Fragment implements FragmentCallback {
+public class FragmentTranslate extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,9 +28,7 @@ public class FragmentSpanish extends Fragment implements FragmentCallback {
     private String mParam1;
     private String mParam2;
 
-    private TextView textView;
-
-    public FragmentSpanish() {
+    public FragmentTranslate() {
         // Required empty public constructor
     }
 
@@ -39,11 +38,11 @@ public class FragmentSpanish extends Fragment implements FragmentCallback {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentSpanish.
+     * @return A new instance of fragment FragmentTranslate.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentSpanish newInstance(String param1, String param2) {
-        FragmentSpanish fragment = new FragmentSpanish();
+    public static FragmentTranslate newInstance(String param1, String param2) {
+        FragmentTranslate fragment = new FragmentTranslate();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,15 +62,20 @@ public class FragmentSpanish extends Fragment implements FragmentCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_translate, container, false);
+        loadButton(view);
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_spanish, container, false);
-        textView = view.findViewById(R.id.fragment_text_spanish);
-
         return view;
     }
 
-    @Override
-    public void msgToFragment(){
-        textView.setText("Spanish");
+    private void loadButton(View view){
+        Button btn_translate = view.findViewById(R.id.translate_button);
+        btn_translate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity main = (MainActivity) getActivity();
+                main.msgToMain(MainActivity.TRANSLATE, 0);
+            }
+        });
     }
 }

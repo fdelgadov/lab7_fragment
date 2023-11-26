@@ -12,9 +12,14 @@
         android:orientation="vertical">
 
         <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_translate"
+            android:layout_width="match_parent"
+            android:layout_height="88dp" />
+
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_principal"
             android:layout_width="match_parent"
-            android:layout_height="639dp" />
+            android:layout_height="562dp" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

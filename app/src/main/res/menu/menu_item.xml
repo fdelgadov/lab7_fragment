@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/action_spanish"
-        android:title="Spanish" />
+        android:title="Español" />
     <item
         android:id="@+id/action_english"
         android:title="English" />
